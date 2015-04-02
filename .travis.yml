@@ -2,12 +2,12 @@ language: ruby
 rvm:
 - 2.1
 
-script: bundle exec jekyll build
 install: 
   - ls
-  - cd plugins/
+  - cd vendor/
   - bundle install
 after_success: bundle exec frontend push --headless
+script: bundle exec jekyll build
 
 # branch whitelist
 branches:
