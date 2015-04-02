@@ -3,7 +3,10 @@ rvm:
 - 2.1
 
 script: bundle exec jekyll build
-install: bundle install
+install: 
+	- ls
+	- cd plugins/
+	- bundle install
 after_success: bundle exec frontend push --headless
 
 # branch whitelist
