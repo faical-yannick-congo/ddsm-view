@@ -1,7 +1,7 @@
 language: ruby
 rvm:
 - 2.1
-script: jekyll build && htmlproof ./frontend
+script: bundle exec jekyll build && htmlproof ./frontend
 
 # branch whitelist
 branches:
