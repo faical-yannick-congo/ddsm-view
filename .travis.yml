@@ -4,16 +4,16 @@ rvm:
 
 script: bundle exec jekyll build
 install: 
-	- ls
-	- cd plugins/
-	- bundle install
+  - ls
+  - cd plugins/
+  - bundle install
 after_success: bundle exec frontend push --headless
 
 # branch whitelist
 branches:
   only:
-  - setup
+    - setup
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of
