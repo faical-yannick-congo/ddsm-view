@@ -19,7 +19,10 @@ rvm:
 sudo: false
 script: 
   - "set -e && gem install github-pages && jekyll build"
-  - "cd frontend && bundle exec jekyll build --trace"
+  - "bundle exec jekyll --version"
+  - "bundle exec rspec"
+  - "bundle exec jekyll new frontend"
+  - "cd frontend && bundle exec jekyll build --watch --trace"
 
 # branch whitelist
 branches:
