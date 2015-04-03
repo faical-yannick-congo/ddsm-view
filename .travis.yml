@@ -2,12 +2,15 @@ language: ruby
 rvm:
 - 2.1
 
-install: 
-  - ls
-  - cd vendor/
-  - bundle install
-after_success: bundle exec frontend push --headless
-script: bundle exec jekyll build
+# before_install:
+# - travis_retry gem install bitballoon
+# - travis_retry gem install jekyll
+# script: jekyll build
+# after_success: bitballoon deploy frontend
+
+script:
+  - bundle exec jekyll build
+  - bundle exec htmlproof ./_site --only-4xx --check-favicon --check-html
 
 # branch whitelist
 branches:
@@ -16,4 +19,4 @@ branches:
 
 env:
   global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
