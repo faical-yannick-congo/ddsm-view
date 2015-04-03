@@ -17,7 +17,9 @@ rvm:
 #   - bundle exec htmlproof ./frontend --only-4xx --check-favicon --check-html
 
 sudo: false
-script: "set -e && gem install github-pages && jekyll build"
+script: 
+  - "set -e && gem install github-pages && jekyll build && htmlproof build"
+  - bundle exec htmlproof ./frontend --only-4xx --check-favicon --check-html
 
 # branch whitelist
 branches:
