@@ -8,14 +8,27 @@ rvm:
 # script: jekyll build
 # after_success: bitballoon deploy frontend
 
-script:
-  - bundle exec jekyll build
-  - bundle exec htmlproof ./_site --only-4xx --check-favicon --check-html
+# before_install:
+# - travis_retry gem install jekyll
+# - travis_retry gem install kramdown
+
+# script:
+#   - bundle exec jekyll build
+#   - bundle exec htmlproof ./frontend --only-4xx --check-favicon --check-html
+
+sudo: false
+script: "set -e && gem install github-pages && jekyll build"
 
 # branch whitelist
 branches:
   only:
     - setup
+
+notifications:
+  email: "yannick.congo@gmail.com"
+
+matrix:
+  fast_finish: true
 
 env:
   global:
