@@ -1176,7 +1176,7 @@
             user.session = parts[1];
             console.log(user.session);
             user.trusted();
-            window.location.replace("http://localhost:8080/ddsm-frontend/dashboard/api/?session="+this.session);
+            window.location.replace("http://52.26.127.180:5000/dashboard/api/?session="+this.session);
         }else if(parts[0] == "action"){
             var scope = parts[1];
             if (scope == "message_sent"){
