@@ -241,7 +241,16 @@ var Space = function (session){
 
                 document.getElementById("projects-list").innerHTML = "";
 
+                var min = new Date(); 
+                var max = min;
+
                 for(var i = 0; i < response["projects"].length; i++){
+                    if(i == 0){
+                        min = project["project"]["created"]
+                    }
+                    if(i == response["projects"].length - 1){
+                        max = project["project"]["created"]
+                    }
                     project = response["projects"][i];
                     var disable_view = "";
                     if(project["project"]["total_records"] == 0){
@@ -257,10 +266,10 @@ var Space = function (session){
                     content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+project["project"]["duration"]+"</p>";
                     content += "<p><i class=\"mdi-action-description cyan-text text-darken-2\"></i> "+project["project"]["description"]+"</p>";
                     content += "<div class=\"card-action\">";
-                    content += "<p><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</p>";
-                    content += "<p><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> "+project["project"]["total_records"]+"</p>";
-                    content += "<p><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> "+project["project"]["total_diffs"]+"</p>";
-                    content += "<p><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> "+project["project"]["history"]+"</p>";
+                    content += "<a href=\"#\"><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</a>";
+                    content += "<a href=\"#\"><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> "+project["project"]["total_records"]+"</a>";
+                    content += "<a href=\"#\"><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> "+project["project"]["total_diffs"]+"</a>";
+                    content += "<a href=\"#\"><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> "+project["project"]["history"]+"</a>";
                     content += "</div>";
                     content += "</div>";
                     content += "</div>";
@@ -270,20 +279,17 @@ var Space = function (session){
 
                 document.getElementById("temporal-slider").innerHTML = "<div class=\"slider-date\"><div class=\"lower\"></div><div class=\"upper\"></div></div><span id=\"event-start\" class=\"temporal-val\">Thursday, 30th December 2010</span><span id=\"event-end\" class=\"temporal-val date-right\">Thursday, 1st January 2015</span>";
 
-                console.log("Min: "+response["projects"][0]["project"]["created"])
-                console.log("Max: "+response["projects"][-1]["project"]["created"])
-
                 $('.slider-date').noUiSlider({
                     animate: true,
                     connect: true,
-                    start: [ timestamp(response["projects"][0]["project"]["created"]), timestamp(response["projects"][response["projects"].length-1]["project"]["created"]) ],
+                    start: [ timestamp(min), timestamp(max) ],
                     step: 1 * 24 * 60 * 60 * 1000,
                     format: wNumb({
                         decimals: 0
                         }),
                     range: {
-                        min: timestamp(response["projects"][0]["project"]["created"]),
-                        max: timestamp(response["projects"][-1]["project"]["created"])
+                        min: timestamp(min),
+                        max: timestamp(max)
                     }
                 });
 
@@ -344,9 +350,9 @@ var Space = function (session){
                     content += "<p><i class=\"mdi-notification-event-note cyan-text text-darken-2\"></i> "+record["id"]+"</p>";
                     content += "<p><i class=\"mdi-notification-sync cyan-text text-darken-2\"></i> "+record["status"]+"</p>";
                     content += "<div class=\"card-action\">";
-                    content += "<p><i class=\"mdi-action-input cyan-text text-darken-2\"></i> <span class=\"inputs badge\">"+record["inputs"]+"</span></p>";
-                    content += "<p><i class=\"mdi-action-launch cyan-text text-darken-2\"></i> <span class=\"outputs badge\">"+record["outputs"]+"</span></p>";
-                    content += "<p><i class=\"mdi-editor-insert-link cyan-text text-darken-2\"></i> <span class=\"dependencies badge\">"+record["dependencies"]+"</span></p>";
+                    content += "<a href=\"#\"><i class=\"mdi-action-input cyan-text text-darken-2\"></i> <span class=\"inputs badge\">"+record["inputs"]+"</span></a>";
+                    content += "<a href=\"#\"><i class=\"mdi-action-launch cyan-text text-darken-2\"></i> <span class=\"outputs badge\">"+record["outputs"]+"</span></a>";
+                    content += "<a href=\"#\"><i class=\"mdi-editor-insert-link cyan-text text-darken-2\"></i> <span class=\"dependencies badge\">"+record["dependencies"]+"</span></a>";
                     content += "</div>";
                     content += "</div>";                
                     content += "</div>";
