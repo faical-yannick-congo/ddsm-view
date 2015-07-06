@@ -286,6 +286,10 @@ var Space = function (session){
 
                 $(".slider-date").Link('lower').to($("#event-start"), setDate);
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
+
+                function exportToJson() {
+                    window.open('data:text/json;charset=utf-8,' + escape(response));
+                }
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
@@ -369,6 +373,10 @@ var Space = function (session){
 
                 $(".slider-date").Link('lower').to($("#event-start"), setDate);
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
+
+                function exportToJson() {
+                    window.open('data:text/json;charset=utf-8,' + escape(response));
+                }
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
