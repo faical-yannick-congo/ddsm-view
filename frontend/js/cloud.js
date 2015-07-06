@@ -256,10 +256,12 @@ var Space = function (session){
                     content += "<p class=\"grey-text ultra-small\"><i class=\"mdi-device-access-time cyan-text text-darken-2\"></i> "+project["project"]["created"]+"</p>";
                     content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+project["project"]["duration"]+"</p>";
                     content += "<p><i class=\"mdi-action-description cyan-text text-darken-2\"></i> "+project["project"]["description"]+"</p>";
+                    content += "<div class=\"card-action\">";
                     content += "<p><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</p>";
                     content += "<p><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> "+project["project"]["total_records"]+"</p>";
                     content += "<p><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> "+project["project"]["total_diffs"]+"</p>";
                     content += "<p><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> "+project["project"]["history"]+"</p>";
+                    content += "</div>";
                     content += "</div>";
                     content += "</div>";
                     content += "</div>";
@@ -268,7 +270,8 @@ var Space = function (session){
 
                 document.getElementById("temporal-slider").innerHTML = "<div class=\"slider-date\"><div class=\"lower\"></div><div class=\"upper\"></div></div><span id=\"event-start\" class=\"temporal-val\">Thursday, 30th December 2010</span><span id=\"event-end\" class=\"temporal-val date-right\">Thursday, 1st January 2015</span>";
 
-
+                console.log("Min: "+response["projects"][0]["project"]["created"])
+                console.log("Max: "+response["projects"][-1]["project"]["created"])
 
                 $('.slider-date').noUiSlider({
                     animate: true,
@@ -280,7 +283,7 @@ var Space = function (session){
                         }),
                     range: {
                         min: timestamp(response["projects"][0]["project"]["created"]),
-                        max: timestamp(response["projects"][response["projects"].length-1]["project"]["created"])
+                        max: timestamp(response["projects"][-1]["project"]["created"])
                     }
                 });
 
@@ -340,10 +343,12 @@ var Space = function (session){
                     content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+record["updated"]+"</p>";
                     content += "<p><i class=\"mdi-notification-event-note cyan-text text-darken-2\"></i> "+record["id"]+"</p>";
                     content += "<p><i class=\"mdi-notification-sync cyan-text text-darken-2\"></i> "+record["status"]+"</p>";
+                    content += "<div class=\"card-action\">";
                     content += "<p><i class=\"mdi-action-input cyan-text text-darken-2\"></i> <span class=\"inputs badge\">"+record["inputs"]+"</span></p>";
                     content += "<p><i class=\"mdi-action-launch cyan-text text-darken-2\"></i> <span class=\"outputs badge\">"+record["outputs"]+"</span></p>";
                     content += "<p><i class=\"mdi-editor-insert-link cyan-text text-darken-2\"></i> <span class=\"dependencies badge\">"+record["dependencies"]+"</span></p>";
                     content += "</div>";
+                    content += "</div>";                
                     content += "</div>";
                     content += "</div>";
                     document.getElementById("projects-list").innerHTML += content;
