@@ -245,13 +245,13 @@ var Space = function (session){
                 var max = min;
 
                 for(var i = 0; i < response["projects"].length; i++){
+                    project = response["projects"][i];
                     if(i == 0){
                         min = project["project"]["created"];
                     }
                     if(i == response["projects"].length - 1){
                         max = project["project"]["created"];
                     }
-                    project = response["projects"][i];
                     var disable_view = "";
                     if(project["project"]["total_records"] == 0){
                         disable_view = "disabled";
