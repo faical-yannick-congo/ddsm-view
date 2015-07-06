@@ -381,7 +381,32 @@ var Space = function (session){
     }
 
     this.exportToJson = function () {
-        window.open('data:text/json;charset=utf-8,' + escape(this.dash_content));
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+        console.log(this.session);
+        xmlhttp.open("GET", url+"/"+this.session+"/project/dashboard");
+        xmlhttp.send();
+        xmlhttp.onreadystatechange=function()
+        {
+            if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
+                // var response = JSON.parse(xmlhttp.responseText);
+                // window.open('data:text/json;charset=utf-8,' + escape(this.dash_content));
+                var pom = document.createElement('a');
+                pom.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(xmlhttp.responseText));
+                pom.setAttribute('download', 'dashboard.json');
+
+                if (document.createEvent) {
+                    var event = document.createEvent('MouseEvents');
+                    event.initEvent('click', true, true);
+                    pom.dispatchEvent(event);
+                }
+                else {
+                    pom.click();
+                }
+            } else {
+                Materialize.toast('<span>Dashboard download failed</span>', 3000);
+                // window.location.replace("http://52.26.127.180:5000/error-500/");
+            }
+        }
     }
 
     this.pull = function(project_name, record_id) {
