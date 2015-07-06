@@ -390,21 +390,23 @@ var Space = function (session){
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 // var response = JSON.parse(xmlhttp.responseText);
                 // window.open('data:text/json;charset=utf-8,' + escape(this.dash_content));
-                var pom = document.createElement('a');
-                pom.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(xmlhttp.responseText));
-                pom.setAttribute('download', 'dashboard.json');
+                if(xmlhttp.responseText != ""){
+                    var pom = document.createElement('a');
+                    pom.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(xmlhttp.responseText));
+                    pom.setAttribute('download', 'dashboard.json');
 
-                if (document.createEvent) {
-                    var event = document.createEvent('MouseEvents');
-                    event.initEvent('click', true, true);
-                    pom.dispatchEvent(event);
+                    if (document.createEvent) {
+                        var event = document.createEvent('MouseEvents');
+                        event.initEvent('click', true, true);
+                        pom.dispatchEvent(event);
+                    }
+                    else {
+                        pom.click();
+                    }
+                    // var aFileParts = [xmlhttp.responseText;
+                    // var oMyBlob = new Blob(aFileParts, {type : 'text/json'}); // the blob
+                    // window.open(URL.createObjectURL(oMyBlob));
                 }
-                else {
-                    pom.click();
-                }
-                // var aFileParts = [xmlhttp.responseText;
-                // var oMyBlob = new Blob(aFileParts, {type : 'text/json'}); // the blob
-                // window.open(URL.createObjectURL(oMyBlob));
             } else {
                 Materialize.toast('<span>Dashboard download failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
