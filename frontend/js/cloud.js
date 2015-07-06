@@ -227,6 +227,7 @@ var user = {
 var Space = function (session){
     var url = "http://52.26.122.110:5200/cloud/v1";
     this.session = session;
+    this.dash_content = "";
 
     this.dashboard = function() {
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
@@ -237,6 +238,7 @@ var Space = function (session){
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 var response = JSON.parse(xmlhttp.responseText);
+                this.dash_content = response;
                 console.log(xmlhttp.responseText);
 
                 document.getElementById("projects-list").innerHTML = "";
@@ -286,10 +288,6 @@ var Space = function (session){
 
                 $(".slider-date").Link('lower').to($("#event-start"), setDate);
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
-
-                function exportToJson() {
-                    window.open('data:text/json;charset=utf-8,' + escape(response));
-                }
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
@@ -310,6 +308,7 @@ var Space = function (session){
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 var response = JSON.parse(xmlhttp.responseText);
+                this.dash_content = response;
                 // console.log(xmlhttp.responseText);
 
                 // {
@@ -373,16 +372,16 @@ var Space = function (session){
 
                 $(".slider-date").Link('lower').to($("#event-start"), setDate);
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
-
-                function exportToJson() {
-                    window.open('data:text/json;charset=utf-8,' + escape(response));
-                }
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
         
+    }
+
+    this.exportToJson = function () {
+        window.open('data:text/json;charset=utf-8,' + escape(this.dash_content));
     }
 
     this.pull = function(project_name, record_id) {
