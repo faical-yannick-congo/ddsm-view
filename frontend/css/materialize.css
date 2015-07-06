@@ -2358,7 +2358,7 @@ span.badge {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  span.badge.new,  span.badge.inputs, span.badge.outputs, span.badge.dependencies{
+  span.badge.new,  span.badge.inputs, span.badge.outputs, span.badge.dependencies,  span.badge.records,  span.badge.diffs,  span.badge.containers, {
     font-weight: 300;
     font-size: 0.8rem;
     color: #fff;
@@ -2378,6 +2378,15 @@ span.badge {
 
   span.badge.dependencies:after {
     content: " dependency"; }
+
+  span.badge.records:after {
+    content: " record"; }
+
+  span.badge.diffs:after {
+    content: " diff"; }
+
+  span.badge.containers:after {
+    content: " container"; }
 
 .video-container {
   position: relative;

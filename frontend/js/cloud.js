@@ -265,11 +265,11 @@ var Space = function (session){
                     content += "<p class=\"grey-text ultra-small\"><i class=\"mdi-device-access-time cyan-text text-darken-2\"></i> "+project["project"]["created"]+"</p>";
                     content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+project["project"]["duration"]+"</p>";
                     content += "<p><i class=\"mdi-action-description cyan-text text-darken-2\"></i> "+project["project"]["description"]+"</p>";
+                    content += "<p><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</p>";
                     content += "<div class=\"card-action\">";
-                    content += "<a href=\"#\"><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</a>";
-                    content += "<a href=\"#\"><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> "+project["project"]["total_records"]+"</a>";
-                    content += "<a href=\"#\"><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> "+project["project"]["total_diffs"]+"</a>";
-                    content += "<a href=\"#\"><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> "+project["project"]["history"]+"</a>";
+                    content += "<a href=\"#\"><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> <span class=\"records badge\">"+project["project"]["total_records"]+"</span></a>";
+                    content += "<a href=\"#\"><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> <span class=\"diffs badge\">"+project["project"]["total_diffs"]+"</span></a>";
+                    content += "<a href=\"#\"><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> <span class=\"containers badge\">"+project["project"]["history"]+"</span></a>";
                     content += "</div>";
                     content += "</div>";
                     content += "</div>";
