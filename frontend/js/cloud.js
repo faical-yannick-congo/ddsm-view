@@ -175,7 +175,7 @@ var user = {
                 //     $('#view-api-value').text(this.api.substring(0,15)+"...");
                 // }else{
                 //     $('#view-api-value').text(this.api);
-                }
+                // }
 
                 console.log("Account Api: "+this.api);
             } else {
