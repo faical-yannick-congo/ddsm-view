@@ -105,26 +105,26 @@
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-social-person-outline prefix"></i>
-                                    <input id="login-email" type="email">
+                                    <input id="login-email" type="email" onkeypress="loginKeyPress(event);">
                                     <label for="login-email" class="center-align">Email</label>
                                   </div>
                                 </div>
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-action-lock-outline prefix"></i>
-                                    <input id="login-password" type="password">
+                                    <input id="login-password" type="password" onkeypress="loginKeyPress(event);">
                                     <label for="login-password">Password</label>
                                   </div>
                                 </div>
                                 <div class="row">          
                                   <div class="input-field col s12 m12 l12  login-text">
-                                      <input type="checkbox" id="remember-me" />
+                                      <input type="checkbox" id="remember-me" onkeypress="loginKeyPress(event);"/>
                                       <label for="remember-me">Remember me</label>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class="input-field col s12">
-                                    <a onclick="return user.login();" class="btn login-button waves-effect waves-light green col s12">Login</a>
+                                    <a id="buttonLogin" onclick="return user.login();" class="btn login-button waves-effect waves-light green col s12">Login</a>
                                   </div>
                                 </div>
                             </div>
@@ -135,34 +135,34 @@
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-social-person-outline prefix"></i>
-                                    <input id="register-username" type="text">
+                                    <input id="register-username" type="text" onkeypress="registerKeyPress(event);">
                                     <label for="register-username" class="center-align">Username</label>
                                   </div>
                                 </div>
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-communication-email prefix"></i>
-                                    <input id="register-email" type="email">
+                                    <input id="register-email" type="email" onkeypress="registerKeyPress(event);">
                                     <label for="register-email" class="center-align">Email</label>
                                   </div>
                                 </div>
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-action-lock-outline prefix"></i>
-                                    <input id="register-password" type="password">
+                                    <input id="register-password" type="password" onkeypress="registerKeyPress(event);">
                                     <label for="register-password">Password</label>
                                   </div>
                                 </div>
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-action-lock-outline prefix"></i>
-                                    <input id="register-password-again" type="password">
+                                    <input id="register-password-again" type="password" onkeypress="registerKeyPress(event);">
                                     <label for="register-password-again">Password again</label>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class="input-field col s12">
-                                    <a onclick="return user.register();" class="btn waves-effect waves-light blue col s12">Register Now</a>
+                                    <a id="buttonRegister" onclick="return user.register();" class="btn waves-effect waves-light blue col s12">Register Now</a>
                                   </div>
                                 </div>
                             </div>
@@ -173,20 +173,20 @@
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-communication-email prefix"></i>
-                                    <input id="contactus-email" type="email">
+                                    <input id="contactus-email" type="email" onkeypress="emailKeyPress(event);">
                                     <label for="contactus-email" class="center-align">Email</label>
                                   </div>
                                 </div>
                                 <div class="row margin">
                                   <div class="input-field col s12">
                                     <i class="mdi-image-edit prefix"></i>
-                                    <input id="contactus-message" type="text">
+                                    <input id="contactus-message" type="text" onkeypress="emailKeyPress(event);">
                                     <label for="contactus-message" class="center-align">Message</label>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class="input-field col s12">
-                                    <a onclick="return user.contactus();" class="btn waves-effect waves-light red col s12">Send</a>
+                                    <a id="buttonEmail" onclick="return user.contactus();" class="btn waves-effect waves-light red col s12">Send</a>
                                   </div>
                                 </div>
                             </div>
@@ -312,8 +312,8 @@
                                 <div class="card">
                                     <div class="card-content  green white-text">
                                         <p class="card-stats-title"><i class="mdi-social-group-add"></i> Toatl Users</p>
-                                        <h4 class="card-stats-number" id="total-users">566</h4>
-                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 15% <span class="green-text text-lighten-5">from last year</span>
+                                        <h4 class="card-stats-number" id="total-users">N/A</h4>
+                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> N/A <span class="green-text text-lighten-5">from last year</span>
                                         </p>
                                     </div>
                                     <div class="card-action  green darken-2">
@@ -325,8 +325,8 @@
                                 <div class="card">
                                     <div class="card-content purple white-text">
                                         <p class="card-stats-title"><i class="mdi-file-folder"></i> Total Projects</p>
-                                        <h4 class="card-stats-number" id="total-projects">xxx</h4>
-                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 20% <span class="purple-text text-lighten-5">from last month</span>
+                                        <h4 class="card-stats-number" id="total-projects">N/A</h4>
+                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> N/A <span class="purple-text text-lighten-5">from last month</span>
                                         </p>
                                     </div>
                                     <div class="card-action purple darken-2">
@@ -339,8 +339,8 @@
                                 <div class="card">
                                     <div class="card-content blue-grey white-text">
                                         <p class="card-stats-title"><i class="mdi-file-cloud-upload"></i> Today Records</p>
-                                        <h4 class="card-stats-number" id="total-records">80652</h4>
-                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 80% <span class="blue-grey-text text-lighten-5">from last week</span>
+                                        <h4 class="card-stats-number" id="total-records">N/A</h4>
+                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> N/A <span class="blue-grey-text text-lighten-5">from last week</span>
                                         </p>
                                     </div>
                                     <div class="card-action blue-grey darken-2">
@@ -352,8 +352,8 @@
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
                                         <p class="card-stats-title"><i class="mdi-device-storage"></i> Total Storage</p>
-                                        <h4 class="card-stats-number" id="total-containers">18</h4>
-                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-down"></i> 4% <span class="deep-purple-text text-lighten-5">from yesterday</span>
+                                        <h4 class="card-stats-number" id="total-containers">N/A</h4>
+                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-down"></i> N/A <span class="deep-purple-text text-lighten-5">from yesterday</span>
                                         </p>
                                     </div>
                                     <div class="card-action  deep-purple darken-2">
@@ -587,6 +587,33 @@
             var scope = parts[1];
             if (scope == "message_sent"){
                 Materialize.toast('<span>Your message has been sent!</span>', 3000);
+            }
+        }
+
+        function loginKeyPress(e)
+        {
+            e = e || window.event;
+            if (e.keyCode == 13)
+            {
+                document.getElementById('buttonLogin').click();
+            }
+        }
+
+        function registerKeyPress(e)
+        {
+            e = e || window.event;
+            if (e.keyCode == 13)
+            {
+                document.getElementById('buttonRegister').click();
+            }
+        }
+
+        function emailKeyPress(e)
+        {
+            e = e || window.event;
+            if (e.keyCode == 13)
+            {
+                document.getElementById('buttonEmail').click();
             }
         }
 
