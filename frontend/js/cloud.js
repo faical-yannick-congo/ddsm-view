@@ -156,24 +156,25 @@ var user = {
                 this.username = response['username'];
                 this.api = response['api'];
 
-                // document.getElementById("view-username-value").value = this.username;
-                // document.getElementById("view-email-value").value = this.email;
-                // document.getElementById("view-api-value").value = this.api;
+                document.getElementById("view-username-value").value = this.username;
+                document.getElementById("view-email-value").value = this.email;
+                document.getElementById("view-api-value").value = this.api;
+                
 
-                if(this.username.length > 18){
-                    $('#view-username-value').text(this.username.substring(0,15)+"...");
-                }else{
-                    $('#view-username-value').text(this.username);
-                }
-                if(this.email.length > 18){
-                    $('#view-email-value').text(this.email.substring(0,15)+"...");
-                }else{
-                    $('#view-email-value').text(this.email);
-                }
-                if(this.api.length > 18){
-                    $('#view-api-value').text(this.api.substring(0,15)+"...");
-                }else{
-                    $('#view-api-value').text(this.api);
+                // if(this.username.length > 18){
+                //     $('#view-username-value').text(this.username.substring(0,15)+"...");
+                // }else{
+                //     $('#view-username-value').text(this.username);
+                // }
+                // if(this.email.length > 18){
+                //     $('#view-email-value').text(this.email.substring(0,15)+"...");
+                // }else{
+                //     $('#view-email-value').text(this.email);
+                // }
+                // if(this.api.length > 18){
+                //     $('#view-api-value').text(this.api.substring(0,15)+"...");
+                // }else{
+                //     $('#view-api-value').text(this.api);
                 }
 
                 console.log("Account Api: "+this.api);
