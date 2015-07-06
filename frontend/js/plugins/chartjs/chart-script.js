@@ -178,7 +178,7 @@ if(parts[0] == "session"){
     {
         // console.log(xmlhttp.responseText);
         if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-        	if(xmlhttp.responseText != ""){
+        	// if(xmlhttp.responseText != ""){
 	        	console.log(xmlhttp.responseText);
 	            var response = JSON.parse(xmlhttp.responseText);
 	            console.log(response);
@@ -371,7 +371,7 @@ if(parts[0] == "session"){
 					// 	responsive:true
 					// });
 	            console.log(data);
-	        }
+	        // }
 
         } else {
         	var projects_total = 0;

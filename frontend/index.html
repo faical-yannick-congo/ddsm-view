@@ -535,33 +535,30 @@
         {
             console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                if(xmlhttp.responseText != ""){
-                    console.log(xmlhttp.responseText);
-                    var response = JSON.parse(xmlhttp.responseText);
-                    console.log(response);
-                    var users = response["users"];
-                    var projects = response["projects"];
-                    var records = response["records"];
-                    var containers = response["containers"];
+                console.log(xmlhttp.responseText);
+                var response = JSON.parse(xmlhttp.responseText);
+                console.log(response);
+                var users = response["users"];
+                var projects = response["projects"];
+                var records = response["records"];
+                var containers = response["containers"];
 
-                    // console.log("Total Users:"+document.getElementById("total-users").value);
+                // console.log("Total Users:"+document.getElementById("total-users").value);
 
-                    document.getElementById("total-users").innerHTML = users["number"];
-                    document.getElementById("total-projects").innerHTML = projects["number"];
-                    document.getElementById("total-records").innerHTML = records["number"];
-                    document.getElementById("total-containers").innerHTML = containers["size"];
+                document.getElementById("total-users").innerHTML = users["number"];
+                document.getElementById("total-projects").innerHTML = projects["number"];
+                document.getElementById("total-records").innerHTML = records["number"];
+                document.getElementById("total-containers").innerHTML = containers["size"];
 
-                    console.log("Total Users:"+users["number"]);
-                    console.log("Total Projects:"+projects["number"]);
-                    console.log("Total Records:"+records["number"]);
-                    console.log("Total Containers:"+containers["size"]);
+                console.log("Total Users:"+users["number"]);
+                console.log("Total Projects:"+projects["number"]);
+                console.log("Total Records:"+records["number"]);
+                console.log("Total Containers:"+containers["size"]);
 
-                    console.log("++Total Users:"+document.getElementById("total-users").value);
-                    console.log("++Total Projects:"+document.getElementById("total-projects").value);
-                    console.log("++Total Records:"+document.getElementById("total-records").value);
-                    console.log("++Total Containers:"+document.getElementById("total-containers").value);
-                }
-
+                console.log("++Total Users:"+document.getElementById("total-users").value);
+                console.log("++Total Projects:"+document.getElementById("total-projects").value);
+                console.log("++Total Records:"+document.getElementById("total-records").value);
+                console.log("++Total Containers:"+document.getElementById("total-containers").value);
             } else {
                 Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);
             }
