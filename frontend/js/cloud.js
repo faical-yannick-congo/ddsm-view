@@ -22,7 +22,8 @@ var user = {
                 
                 window.location.replace("http://52.26.127.180:5000/?session="+this.session);
             } else {
-                Materialize.toast('<span>Login failed</span>', 3000);
+                Log.console("Login failed! :-(");
+                // Materialize.toast('<span>Login failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -49,7 +50,8 @@ var user = {
                     console.log(this.session)
                     window.location.replace("http://52.26.127.180:5000/?session="+this.session);
                 } else {
-                    Materialize.toast('<span>Register failed</span>', 3000);
+                    // Materialize.toast('<span>Register failed</span>', 3000);
+                    Log.console("Register failed! :-(");
                     // window.location.replace("http://52.26.127.180:5000/error-500/");
                 }
             }
@@ -70,7 +72,8 @@ var user = {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 window.location.replace("http://52.26.127.180:5000/");
             } else {
-                Materialize.toast('<span>Logout failed</span>', 3000);
+                Log.console("Logout failed! :-(");
+                // Materialize.toast('<span>Logout failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -95,7 +98,8 @@ var user = {
                 
                 window.location.replace("http://52.26.127.180:5000/?session="+this.session);
             } else {
-                Materialize.toast('<span>Update failed</span>', 3000);
+                Log.console("Update failed! :-(");
+                // Materialize.toast('<span>Update failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
         }
@@ -118,6 +122,7 @@ var user = {
                 // Materialize.toast('<span>Your message has been sent!</span>', 3000);
                 window.location.replace("http://52.26.127.180:5000/?action=message_sent");
             } else {
+                Log.console("Contactus failed! :-(");
                 Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
@@ -160,21 +165,25 @@ var user = {
                 // document.getElementById("view-email-value").value = this.email;
                 // document.getElementById("view-api-value").value = this.api;
 
-                if(this.username.length > 18){
-                    $('#view-username-value').text(this.username.substring(0,15)+"...");
-                }else{
-                    $('#view-username-value').text(this.username);
-                }
-                if(this.email.length > 18){
-                    $('#view-email-value').text(this.email.substring(0,15)+"...");
-                }else{
-                    $('#view-email-value').text(this.email);
-                }
-                if(this.api.length > 18){
-                    $('#view-api-value').text(this.api.substring(0,15)+"...");
-                }else{
-                    $('#view-api-value').text(this.api);
-                }
+                $('#view-username-value').text(this.username);
+                $('#view-email-value').text(this.email);
+                $('#view-api-value').text(this.api);
+
+                // if(this.username.length > 18){
+                //     $('#view-username-value').text(this.username.substring(0,15)+"...");
+                // }else{
+                //     $('#view-username-value').text(this.username);
+                // }
+                // if(this.email.length > 18){
+                //     $('#view-email-value').text(this.email.substring(0,15)+"...");
+                // }else{
+                //     $('#view-email-value').text(this.email);
+                // }
+                // if(this.api.length > 18){
+                //     $('#view-api-value').text(this.api.substring(0,15)+"...");
+                // }else{
+                //     $('#view-api-value').text(this.api);
+                // }
 
                 console.log("Account Api: "+this.api);
             } else {
@@ -283,6 +292,8 @@ var Space = function (session){
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
+                document.getElementById("temporal-slider").innerHTML = "";
+                document.getElementById("projects-list").innerHTML = "";
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -301,7 +312,7 @@ var Space = function (session){
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 var response = JSON.parse(xmlhttp.responseText);
-                // console.log(xmlhttp.responseText);
+                console.log(xmlhttp.responseText);
 
                 // {
                 //     "created": "2015-06-18 17:05:03.477000",

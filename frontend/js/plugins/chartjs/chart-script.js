@@ -370,105 +370,180 @@ if(parts[0] == "session"){
 				// 	responsive:true
 				// });
             console.log(data);
-
         } else {
+        	var projects_total = 0;
+            var records_total = 0;
+            var containers_total = 0;
+            var projects = [];
+
+            document.getElementById("trending-line-chart-wrapper").innerHTML = "<canvas id=\"trending-line-chart\" height=\"70\"></canvas>";
+	        document.getElementById("doughnut-chart-wrapper").innerHTML = "<canvas id=\"doughnut-chart\" height=\"200\"></canvas><div class=\"doughnut-chart-status\" id=\"doughnut-chart-status\">"+records_total+"<p class=\"ultra-small center-align\">Records</p></div>";
+	        document.getElementById("trending-bar-chart-wrapper").innerHTML = "<canvas id=\"trending-bar-chart\" height=\"90\"></canvas>";
+
+
+            data["datasets"] = [];
+            dataBarChart["datasets"] = [];
+            doughnutData = []
+            color = "#000000";
+
             Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);
+
+            var trendingLineChart = document.getElementById("trending-line-chart").getContext("2d");
+			window.trendingLineChart = new Chart(trendingLineChart).Line(data, {		
+				scaleShowGridLines : true,///Boolean - Whether grid lines are shown across the chart		
+				scaleGridLineColor : "rgba(255,255,255,0.4)",//String - Colour of the grid lines		
+				scaleGridLineWidth : 1,//Number - Width of the grid lines		
+				scaleShowHorizontalLines: true,//Boolean - Whether to show horizontal lines (except X axis)		
+				scaleShowVerticalLines: false,//Boolean - Whether to show vertical lines (except Y axis)		
+				bezierCurve : true,//Boolean - Whether the line is curved between points		
+				bezierCurveTension : 0.4,//Number - Tension of the bezier curve between points		
+				pointDot : true,//Boolean - Whether to show a dot for each point		
+				pointDotRadius : 5,//Number - Radius of each point dot in pixels		
+				pointDotStrokeWidth : 2,//Number - Pixel width of point dot stroke		
+				pointHitDetectionRadius : 20,//Number - amount extra to add to the radius to cater for hit detection outside the drawn point		
+				datasetStroke : true,//Boolean - Whether to show a stroke for datasets		
+				datasetStrokeWidth : 3,//Number - Pixel width of dataset stroke		
+				datasetFill : true,//Boolean - Whether to fill the dataset with a colour				
+				animationSteps: 15,// Number - Number of animation steps		
+				animationEasing: "easeOutQuart",// String - Animation easing effect			
+				tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+				scaleFontSize: 12,// Number - Scale label font size in pixels		
+				scaleFontStyle: "normal",// String - Scale label font weight style		
+				scaleFontColor: "#fff",// String - Scale label font colour
+				tooltipEvents: ["mousemove", "touchstart", "touchmove"],// Array - Array of string names to attach tooltip events		
+				tooltipFillColor: "rgba(255,255,255,0.8)",// String - Tooltip background colour		
+				tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+				tooltipFontSize: 12,// Number - Tooltip label font size in pixels
+				tooltipFontColor: "#000",// String - Tooltip label font colour		
+				tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+				tooltipTitleFontSize: 14,// Number - Tooltip title font size in pixels		
+				tooltipTitleFontStyle: "bold",// String - Tooltip title font weight style		
+				tooltipTitleFontColor: "#000",// String - Tooltip title font colour		
+				tooltipYPadding: 8,// Number - pixel width of padding around tooltip text		
+				tooltipXPadding: 16,// Number - pixel width of padding around tooltip text		
+				tooltipCaretSize: 10,// Number - Size of the caret on the tooltip		
+				tooltipCornerRadius: 6,// Number - Pixel radius of the tooltip border		
+				tooltipXOffset: 10,// Number - Pixel offset from point x to tooltip edge
+				responsive: true
+				});
+
+				var doughnutChart = document.getElementById("doughnut-chart").getContext("2d");
+				window.myDoughnut = new Chart(doughnutChart).Doughnut(doughnutData, {
+					segmentStrokeColor : "#fff",
+					tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+					percentageInnerCutout : 50,
+					animationSteps : 15,
+					segmentStrokeWidth : 4,
+					animateScale: true,
+					percentageInnerCutout : 60,
+					responsive : true
+				});
+
+				var trendingBarChart = document.getElementById("trending-bar-chart").getContext("2d");
+				window.trendingBarChart = new Chart(trendingBarChart).Bar(dataBarChart,{
+					scaleShowGridLines : false,///Boolean - Whether grid lines are shown across the chart
+					showScale: true,
+					animationSteps:15,
+					tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+					responsive : true
+				});
         }
     }
 }else{
 	window.onload = function(){
-		var trendingLineChart = document.getElementById("trending-line-chart").getContext("2d");
-		window.trendingLineChart = new Chart(trendingLineChart).Line(data, {		
-			scaleShowGridLines : true,///Boolean - Whether grid lines are shown across the chart		
-			scaleGridLineColor : "rgba(255,255,255,0.4)",//String - Colour of the grid lines		
-			scaleGridLineWidth : 1,//Number - Width of the grid lines		
-			scaleShowHorizontalLines: true,//Boolean - Whether to show horizontal lines (except X axis)		
-			scaleShowVerticalLines: false,//Boolean - Whether to show vertical lines (except Y axis)		
-			bezierCurve : true,//Boolean - Whether the line is curved between points		
-			bezierCurveTension : 0.4,//Number - Tension of the bezier curve between points		
-			pointDot : true,//Boolean - Whether to show a dot for each point		
-			pointDotRadius : 5,//Number - Radius of each point dot in pixels		
-			pointDotStrokeWidth : 2,//Number - Pixel width of point dot stroke		
-			pointHitDetectionRadius : 20,//Number - amount extra to add to the radius to cater for hit detection outside the drawn point		
-			datasetStroke : true,//Boolean - Whether to show a stroke for datasets		
-			datasetStrokeWidth : 3,//Number - Pixel width of dataset stroke		
-			datasetFill : true,//Boolean - Whether to fill the dataset with a colour				
-			animationSteps: 15,// Number - Number of animation steps		
-			animationEasing: "easeOutQuart",// String - Animation easing effect			
-			tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
-			scaleFontSize: 12,// Number - Scale label font size in pixels		
-			scaleFontStyle: "normal",// String - Scale label font weight style		
-			scaleFontColor: "#fff",// String - Scale label font colour
-			tooltipEvents: ["mousemove", "touchstart", "touchmove"],// Array - Array of string names to attach tooltip events		
-			tooltipFillColor: "rgba(255,255,255,0.8)",// String - Tooltip background colour		
-			tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
-			tooltipFontSize: 12,// Number - Tooltip label font size in pixels
-			tooltipFontColor: "#000",// String - Tooltip label font colour		
-			tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
-			tooltipTitleFontSize: 14,// Number - Tooltip title font size in pixels		
-			tooltipTitleFontStyle: "bold",// String - Tooltip title font weight style		
-			tooltipTitleFontColor: "#000",// String - Tooltip title font colour		
-			tooltipYPadding: 8,// Number - pixel width of padding around tooltip text		
-			tooltipXPadding: 16,// Number - pixel width of padding around tooltip text		
-			tooltipCaretSize: 10,// Number - Size of the caret on the tooltip		
-			tooltipCornerRadius: 6,// Number - Pixel radius of the tooltip border		
-			tooltipXOffset: 10,// Number - Pixel offset from point x to tooltip edge
-			responsive: true
-			});
+		window.location.replace("http://52.26.127.180:5000/error-404/");
+		// var trendingLineChart = document.getElementById("trending-line-chart").getContext("2d");
+		// window.trendingLineChart = new Chart(trendingLineChart).Line(data, {		
+		// 	scaleShowGridLines : true,///Boolean - Whether grid lines are shown across the chart		
+		// 	scaleGridLineColor : "rgba(255,255,255,0.4)",//String - Colour of the grid lines		
+		// 	scaleGridLineWidth : 1,//Number - Width of the grid lines		
+		// 	scaleShowHorizontalLines: true,//Boolean - Whether to show horizontal lines (except X axis)		
+		// 	scaleShowVerticalLines: false,//Boolean - Whether to show vertical lines (except Y axis)		
+		// 	bezierCurve : true,//Boolean - Whether the line is curved between points		
+		// 	bezierCurveTension : 0.4,//Number - Tension of the bezier curve between points		
+		// 	pointDot : true,//Boolean - Whether to show a dot for each point		
+		// 	pointDotRadius : 5,//Number - Radius of each point dot in pixels		
+		// 	pointDotStrokeWidth : 2,//Number - Pixel width of point dot stroke		
+		// 	pointHitDetectionRadius : 20,//Number - amount extra to add to the radius to cater for hit detection outside the drawn point		
+		// 	datasetStroke : true,//Boolean - Whether to show a stroke for datasets		
+		// 	datasetStrokeWidth : 3,//Number - Pixel width of dataset stroke		
+		// 	datasetFill : true,//Boolean - Whether to fill the dataset with a colour				
+		// 	animationSteps: 15,// Number - Number of animation steps		
+		// 	animationEasing: "easeOutQuart",// String - Animation easing effect			
+		// 	tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+		// 	scaleFontSize: 12,// Number - Scale label font size in pixels		
+		// 	scaleFontStyle: "normal",// String - Scale label font weight style		
+		// 	scaleFontColor: "#fff",// String - Scale label font colour
+		// 	tooltipEvents: ["mousemove", "touchstart", "touchmove"],// Array - Array of string names to attach tooltip events		
+		// 	tooltipFillColor: "rgba(255,255,255,0.8)",// String - Tooltip background colour		
+		// 	tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+		// 	tooltipFontSize: 12,// Number - Tooltip label font size in pixels
+		// 	tooltipFontColor: "#000",// String - Tooltip label font colour		
+		// 	tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+		// 	tooltipTitleFontSize: 14,// Number - Tooltip title font size in pixels		
+		// 	tooltipTitleFontStyle: "bold",// String - Tooltip title font weight style		
+		// 	tooltipTitleFontColor: "#000",// String - Tooltip title font colour		
+		// 	tooltipYPadding: 8,// Number - pixel width of padding around tooltip text		
+		// 	tooltipXPadding: 16,// Number - pixel width of padding around tooltip text		
+		// 	tooltipCaretSize: 10,// Number - Size of the caret on the tooltip		
+		// 	tooltipCornerRadius: 6,// Number - Pixel radius of the tooltip border		
+		// 	tooltipXOffset: 10,// Number - Pixel offset from point x to tooltip edge
+		// 	responsive: true
+		// 	});
 
-			var doughnutChart = document.getElementById("doughnut-chart").getContext("2d");
-			window.myDoughnut = new Chart(doughnutChart).Doughnut(doughnutData, {
-				segmentStrokeColor : "#fff",
-				tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
-				percentageInnerCutout : 50,
-				animationSteps : 15,
-				segmentStrokeWidth : 4,
-				animateScale: true,
-				percentageInnerCutout : 60,
-				responsive : true
-			});
+		// 	var doughnutChart = document.getElementById("doughnut-chart").getContext("2d");
+		// 	window.myDoughnut = new Chart(doughnutChart).Doughnut(doughnutData, {
+		// 		segmentStrokeColor : "#fff",
+		// 		tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+		// 		percentageInnerCutout : 50,
+		// 		animationSteps : 15,
+		// 		segmentStrokeWidth : 4,
+		// 		animateScale: true,
+		// 		percentageInnerCutout : 60,
+		// 		responsive : true
+		// 	});
 
-			var trendingBarChart = document.getElementById("trending-bar-chart").getContext("2d");
-			window.trendingBarChart = new Chart(trendingBarChart).Bar(dataBarChart,{
-				scaleShowGridLines : false,///Boolean - Whether grid lines are shown across the chart
-				showScale: true,
-				animationSteps:15,
-				tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
-				responsive : true
-			});
+		// 	var trendingBarChart = document.getElementById("trending-bar-chart").getContext("2d");
+		// 	window.trendingBarChart = new Chart(trendingBarChart).Bar(dataBarChart,{
+		// 		scaleShowGridLines : false,///Boolean - Whether grid lines are shown across the chart
+		// 		showScale: true,
+		// 		animationSteps:15,
+		// 		tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
+		// 		responsive : true
+		// 	});
 
-			// window.trendingRadarChart = new Chart(document.getElementById("trending-radar-chart").getContext("2d")).Radar(radarChartData, {
+		// 	// window.trendingRadarChart = new Chart(document.getElementById("trending-radar-chart").getContext("2d")).Radar(radarChartData, {
 			    
-			//     angleLineColor : "rgba(255,255,255,0.5)",//String - Colour of the angle line		    
-			//     pointLabelFontFamily : "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label	
-			//     pointLabelFontColor : "#fff",//String - Point label font colour
-			//     pointDotRadius : 4,
-			//     animationSteps:15,
-			//     pointDotStrokeWidth : 2,
-			//     pointLabelFontSize : 12,
-			// 	responsive: true
-			// });
+		// 	//     angleLineColor : "rgba(255,255,255,0.5)",//String - Colour of the angle line		    
+		// 	//     pointLabelFontFamily : "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label	
+		// 	//     pointLabelFontColor : "#fff",//String - Point label font colour
+		// 	//     pointDotRadius : 4,
+		// 	//     animationSteps:15,
+		// 	//     pointDotStrokeWidth : 2,
+		// 	//     pointLabelFontSize : 12,
+		// 	// 	responsive: true
+		// 	// });
 
-			// var pieChartArea = document.getElementById("pie-chart-area").getContext("2d");
-			// window.pieChartArea = new Chart(pieChartArea).Pie(pieData,{
-			// 	responsive: true		
-			// });
+		// 	// var pieChartArea = document.getElementById("pie-chart-area").getContext("2d");
+		// 	// window.pieChartArea = new Chart(pieChartArea).Pie(pieData,{
+		// 	// 	responsive: true		
+		// 	// });
 
-			// var lineChart = document.getElementById("line-chart").getContext("2d");
-			// window.lineChart = new Chart(lineChart).Line(lineChartData, {
-			// 	scaleShowGridLines : false,
-			// 	bezierCurve : false,
-			// 	scaleFontSize: 12,
-			// 	scaleFontStyle: "normal",
-			// 	scaleFontColor: "#fff",
-			// 	responsive: true,			
-			// });
+		// 	// var lineChart = document.getElementById("line-chart").getContext("2d");
+		// 	// window.lineChart = new Chart(lineChart).Line(lineChartData, {
+		// 	// 	scaleShowGridLines : false,
+		// 	// 	bezierCurve : false,
+		// 	// 	scaleFontSize: 12,
+		// 	// 	scaleFontStyle: "normal",
+		// 	// 	scaleFontColor: "#fff",
+		// 	// 	responsive: true,			
+		// 	// });
 
-			// var polarChartCountry = document.getElementById("polar-chart-country").getContext("2d");
-			// window.polarChartCountry = new Chart(polarChartCountry).PolarArea(polarData, {
-			// 	segmentStrokeWidth : 1,			
-			// 	responsive:true
-			// });
+		// 	// var polarChartCountry = document.getElementById("polar-chart-country").getContext("2d");
+		// 	// window.polarChartCountry = new Chart(polarChartCountry).PolarArea(polarData, {
+		// 	// 	segmentStrokeWidth : 1,			
+		// 	// 	responsive:true
+		// 	// });
 
 	};
 }
