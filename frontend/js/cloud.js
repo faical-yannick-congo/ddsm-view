@@ -246,10 +246,10 @@ var Space = function (session){
 
                 for(var i = 0; i < response["projects"].length; i++){
                     if(i == 0){
-                        min = project["project"]["created"]
+                        min = project["project"]["created"];
                     }
                     if(i == response["projects"].length - 1){
-                        max = project["project"]["created"]
+                        max = project["project"]["created"];
                     }
                     project = response["projects"][i];
                     var disable_view = "";
