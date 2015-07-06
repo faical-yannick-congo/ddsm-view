@@ -266,7 +266,7 @@ var Space = function (session){
                     content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+project["project"]["duration"]+"</p>";
                     content += "<p><i class=\"mdi-action-description cyan-text text-darken-2\"></i> "+project["project"]["description"]+"</p>";
                     content += "<p><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</p>";
-                    content += "<div class=\"card-action\">";
+                    content += "<div class=\"card-action valign-wrapper\">";
                     content += "<a href=\"#\"><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> <span class=\"records badge\">"+project["project"]["total_records"]+"</span></a>";
                     content += "<a href=\"#\"><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> <span class=\"diffs badge\">"+project["project"]["total_diffs"]+"</span></a>";
                     content += "<a href=\"#\"><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> <span class=\"containers badge\">"+project["project"]["history"]+"</span></a>";
@@ -349,7 +349,7 @@ var Space = function (session){
                     content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+record["updated"]+"</p>";
                     content += "<p><i class=\"mdi-notification-event-note cyan-text text-darken-2\"></i> "+record["id"]+"</p>";
                     content += "<p><i class=\"mdi-notification-sync cyan-text text-darken-2\"></i> "+record["status"]+"</p>";
-                    content += "<div class=\"card-action\">";
+                    content += "<div class=\"card-action valign-wrapper\">";
                     content += "<a href=\"#\"><i class=\"mdi-action-input cyan-text text-darken-2\"></i> <span class=\"inputs badge\">"+record["inputs"]+"</span></a>";
                     content += "<a href=\"#\"><i class=\"mdi-action-launch cyan-text text-darken-2\"></i> <span class=\"outputs badge\">"+record["outputs"]+"</span></a>";
                     content += "<a href=\"#\"><i class=\"mdi-editor-insert-link cyan-text text-darken-2\"></i> <span class=\"dependencies badge\">"+record["dependencies"]+"</span></a>";
