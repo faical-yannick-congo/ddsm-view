@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <meta name="description" content="DDSM is a cloud service for simulation execution record atoms. ">
+    <meta name="keywords" content="simulation, cloud, service, record, atom, metadata,">
     <title>DDSM - Data Driven Simulation Management</title>
 
     <!-- Favicons-->
@@ -535,29 +535,32 @@
         {
             console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                console.log(response);
-                var users = response["users"];
-                var projects = response["projects"];
-                var records = response["records"];
-                var containers = response["containers"];
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    var response = JSON.parse(xmlhttp.responseText);
+                    console.log(response);
+                    var users = response["users"];
+                    var projects = response["projects"];
+                    var records = response["records"];
+                    var containers = response["containers"];
 
-                // console.log("Total Users:"+document.getElementById("total-users").value);
+                    // console.log("Total Users:"+document.getElementById("total-users").value);
 
-                document.getElementById("total-users").innerHTML = users["number"];
-                document.getElementById("total-projects").innerHTML = projects["number"];
-                document.getElementById("total-records").innerHTML = records["number"];
-                document.getElementById("total-containers").innerHTML = containers["size"];
+                    document.getElementById("total-users").innerHTML = users["number"];
+                    document.getElementById("total-projects").innerHTML = projects["number"];
+                    document.getElementById("total-records").innerHTML = records["number"];
+                    document.getElementById("total-containers").innerHTML = containers["size"];
 
-                console.log("Total Users:"+users["number"]);
-                console.log("Total Projects:"+projects["number"]);
-                console.log("Total Records:"+records["number"]);
-                console.log("Total Containers:"+containers["size"]);
+                    console.log("Total Users:"+users["number"]);
+                    console.log("Total Projects:"+projects["number"]);
+                    console.log("Total Records:"+records["number"]);
+                    console.log("Total Containers:"+containers["size"]);
 
-                console.log("++Total Users:"+document.getElementById("total-users").value);
-                console.log("++Total Projects:"+document.getElementById("total-projects").value);
-                console.log("++Total Records:"+document.getElementById("total-records").value);
-                console.log("++Total Containers:"+document.getElementById("total-containers").value);
+                    console.log("++Total Users:"+document.getElementById("total-users").value);
+                    console.log("++Total Projects:"+document.getElementById("total-projects").value);
+                    console.log("++Total Records:"+document.getElementById("total-records").value);
+                    console.log("++Total Containers:"+document.getElementById("total-containers").value);
+                }
 
             } else {
                 Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);

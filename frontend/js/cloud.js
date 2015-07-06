@@ -16,13 +16,17 @@ var user = {
         xmlhttp.onreadystatechange=function()
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                this.session = response['session']
-                console.log(this.session);
-                
-                window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    var response = JSON.parse(xmlhttp.responseText);
+                    this.session = response['session']
+                    console.log(this.session);
+                    
+                    window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                }
             } else {
-                Materialize.toast('<span>Login failed</span>', 3000);
+                Log.console("Login failed! :-(");
+                // Materialize.toast('<span>Login failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -44,12 +48,16 @@ var user = {
             xmlhttp.onreadystatechange=function()
             {
                 if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                    var response = JSON.parse(xmlhttp.responseText);
-                    this.session = response['session']
-                    console.log(this.session)
-                    window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                    if(xmlhttp.responseText != ""){
+                        console.log(xmlhttp.responseText);
+                        var response = JSON.parse(xmlhttp.responseText);
+                        this.session = response['session']
+                        console.log(this.session)
+                        window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                    }
                 } else {
-                    Materialize.toast('<span>Register failed</span>', 3000);
+                    // Materialize.toast('<span>Register failed</span>', 3000);
+                    Log.console("Register failed! :-(");
                     // window.location.replace("http://52.26.127.180:5000/error-500/");
                 }
             }
@@ -66,11 +74,14 @@ var user = {
         xmlhttp.send();
         xmlhttp.onreadystatechange=function()
         {
-            console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                window.location.replace("http://52.26.127.180:5000/");
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    window.location.replace("http://52.26.127.180:5000/");
+                }
             } else {
-                Materialize.toast('<span>Logout failed</span>', 3000);
+                Log.console("Logout failed! :-(");
+                // Materialize.toast('<span>Logout failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -88,14 +99,18 @@ var user = {
         xmlhttp.onreadystatechange=function()
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                this.session = response['session']
-                console.log(this.session)
-                // document.getElementById("nav-login").innerHTML = "<li><a href=\"index.html\" class=\"waves-effect waves-block waves-light\"><i class=\"nav-action mdi-action-exit-to-app\"></i></a></li>";
-                
-                window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    var response = JSON.parse(xmlhttp.responseText);
+                    this.session = response['session']
+                    console.log(this.session)
+                    // document.getElementById("nav-login").innerHTML = "<li><a href=\"index.html\" class=\"waves-effect waves-block waves-light\"><i class=\"nav-action mdi-action-exit-to-app\"></i></a></li>";
+                    
+                    window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                }
             } else {
-                Materialize.toast('<span>Update failed</span>', 3000);
+                Log.console("Update failed! :-(");
+                // Materialize.toast('<span>Update failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
         }
@@ -114,10 +129,14 @@ var user = {
         xmlhttp.onreadystatechange=function()
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                console.log(xmlhttp.responseText)                
-                // Materialize.toast('<span>Your message has been sent!</span>', 3000);
-                window.location.replace("http://52.26.127.180:5000/?action=message_sent");
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    console.log(xmlhttp.responseText)                
+                    // Materialize.toast('<span>Your message has been sent!</span>', 3000);
+                    window.location.replace("http://52.26.127.180:5000/?action=message_sent");
+                }
             } else {
+                Log.console("Contactus failed! :-(");
                 Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
@@ -132,9 +151,11 @@ var user = {
         xmlhttp.send();
         xmlhttp.onreadystatechange=function()
         {
-            console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                Materialize.toast('<span>Access trusted!</span>', 3000);
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    Materialize.toast('<span>Access trusted!</span>', 3000);
+                }
             } else {
                 window.location.replace("http://52.26.127.180:5000/error-404/");
             }
@@ -149,34 +170,40 @@ var user = {
         xmlhttp.send();
         xmlhttp.onreadystatechange=function()
         {
-            console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                this.email = response['email'];
-                this.username = response['username'];
-                this.api = response['api'];
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    var response = JSON.parse(xmlhttp.responseText);
+                    this.email = response['email'];
+                    this.username = response['username'];
+                    this.api = response['api'];
 
-                // document.getElementById("view-username-value").value = this.username;
-                // document.getElementById("view-email-value").value = this.email;
-                // document.getElementById("view-api-value").value = this.api;
+                    // document.getElementById("view-username-value").value = this.username;
+                    // document.getElementById("view-email-value").value = this.email;
+                    // document.getElementById("view-api-value").value = this.api;
 
-                if(this.username.length > 18){
-                    $('#view-username-value').text(this.username.substring(0,15)+"...");
-                }else{
                     $('#view-username-value').text(this.username);
-                }
-                if(this.email.length > 18){
-                    $('#view-email-value').text(this.email.substring(0,15)+"...");
-                }else{
                     $('#view-email-value').text(this.email);
-                }
-                if(this.api.length > 18){
-                    $('#view-api-value').text(this.api.substring(0,15)+"...");
-                }else{
                     $('#view-api-value').text(this.api);
-                }
 
-                console.log("Account Api: "+this.api);
+                    // if(this.username.length > 18){
+                    //     $('#view-username-value').text(this.username.substring(0,15)+"...");
+                    // }else{
+                    //     $('#view-username-value').text(this.username);
+                    // }
+                    // if(this.email.length > 18){
+                    //     $('#view-email-value').text(this.email.substring(0,15)+"...");
+                    // }else{
+                    //     $('#view-email-value').text(this.email);
+                    // }
+                    // if(this.api.length > 18){
+                    //     $('#view-api-value').text(this.api.substring(0,15)+"...");
+                    // }else{
+                    //     $('#view-api-value').text(this.api);
+                    // }
+
+                    console.log("Account Api: "+this.api);
+                }
             } else {
                 window.location.replace("http://52.26.127.180:5000/error-404/");
             }
@@ -191,16 +218,18 @@ var user = {
         xmlhttp.send();
         xmlhttp.onreadystatechange=function()
         {
-            console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                this.api = response['api'];
-                if(this.api.length > 18){
-                    $('#view-api-value').text(this.api.substring(0,15)+"...");
-                }else{
-                    $('#view-api-value').text(this.api);
+                if(xmlhttp.responseText != ""){
+                    console.log(xmlhttp.responseText);
+                    var response = JSON.parse(xmlhttp.responseText);
+                    this.api = response['api'];
+                    if(this.api.length > 18){
+                        $('#view-api-value').text(this.api.substring(0,15)+"...");
+                    }else{
+                        $('#view-api-value').text(this.api);
+                    }
+                    Materialize.toast('<span>API Token renewed!</span>', 3000);
                 }
-                Materialize.toast('<span>API Token renewed!</span>', 3000);
             } else {
                 window.location.replace("http://52.26.127.180:5000/error-404/");
             }
@@ -231,58 +260,62 @@ var Space = function (session){
         xmlhttp.onreadystatechange=function()
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                console.log(xmlhttp.responseText);
+                if(xmlhttp.responseText != ""){
+                    var response = JSON.parse(xmlhttp.responseText);
+                    console.log(xmlhttp.responseText);
 
-                document.getElementById("projects-list").innerHTML = "";
+                    document.getElementById("projects-list").innerHTML = "";
 
-                for(var i = 0; i < response["projects"].length; i++){
-                    project = response["projects"][i];
-                    var disable_view = "";
-                    if(project["project"]["total_records"] == 0){
-                        disable_view = "disabled";
+                    for(var i = 0; i < response["projects"].length; i++){
+                        project = response["projects"][i];
+                        var disable_view = "";
+                        if(project["project"]["total_records"] == 0){
+                            disable_view = "disabled";
+                        }
+                        // console.log(project);
+                        var content = "<div class=\"col s12 m6 l4\">";
+                        content += "<div id=\"profile-card\" class=\"card\">";
+                        content += "<div class=\"card-image waves-effect waves-block waves-light\"><img class=\"activator\" src=\"../images/user-bg.jpg\" alt=\"user background\"></div>";
+                        content += "<div class=\"card-content\">";
+                        content += "<img src=\"../images/project.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image\"><a onclick=\"space.records('"+project["project"]["name"]+"')\" class=\"btn-floating activator btn-move-up waves-effect waves-light darken-2 right "+disable_view+"\"><i class=\"mdi-action-visibility\"></i></a><span class=\"card-title activator grey-text text-darken-4\"> "+project["project"]["name"]+"</span>";
+                        content += "<p class=\"grey-text ultra-small\"><i class=\"mdi-device-access-time cyan-text text-darken-2\"></i> "+project["project"]["created"]+"</p>";
+                        content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+project["project"]["duration"]+"</p>";
+                        content += "<p><i class=\"mdi-action-description cyan-text text-darken-2\"></i> "+project["project"]["description"]+"</p>";
+                        content += "<p><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</p>";
+                        content += "<p><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> "+project["project"]["total_records"]+"</p>";
+                        content += "<p><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> "+project["project"]["total_diffs"]+"</p>";
+                        content += "<p><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> "+project["project"]["history"]+"</p>";
+                        content += "</div>";
+                        content += "</div>";
+                        content += "</div>";
+                        document.getElementById("projects-list").innerHTML += content;
                     }
-                    // console.log(project);
-                    var content = "<div class=\"col s12 m6 l4\">";
-                    content += "<div id=\"profile-card\" class=\"card\">";
-                    content += "<div class=\"card-image waves-effect waves-block waves-light\"><img class=\"activator\" src=\"../images/user-bg.jpg\" alt=\"user background\"></div>";
-                    content += "<div class=\"card-content\">";
-                    content += "<img src=\"../images/project.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image\"><a onclick=\"space.records('"+project["project"]["name"]+"')\" class=\"btn-floating activator btn-move-up waves-effect waves-light darken-2 right "+disable_view+"\"><i class=\"mdi-action-visibility\"></i></a><span class=\"card-title activator grey-text text-darken-4\"> "+project["project"]["name"]+"</span>";
-                    content += "<p class=\"grey-text ultra-small\"><i class=\"mdi-device-access-time cyan-text text-darken-2\"></i> "+project["project"]["created"]+"</p>";
-                    content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+project["project"]["duration"]+"</p>";
-                    content += "<p><i class=\"mdi-action-description cyan-text text-darken-2\"></i> "+project["project"]["description"]+"</p>";
-                    content += "<p><i class=\"mdi-action-subject cyan-text text-darken-2\"></i> "+project["project"]["goals"]+"</p>";
-                    content += "<p><i class=\"mdi-file-cloud-done cyan-text text-darken-2\"></i> "+project["project"]["total_records"]+"</p>";
-                    content += "<p><i class=\"mdi-image-compare cyan-text text-darken-2\"></i> "+project["project"]["total_diffs"]+"</p>";
-                    content += "<p><i class=\"mdi-editor-insert-chart cyan-text text-darken-2\"></i> "+project["project"]["history"]+"</p>";
-                    content += "</div>";
-                    content += "</div>";
-                    content += "</div>";
-                    document.getElementById("projects-list").innerHTML += content;
+
+                    document.getElementById("temporal-slider").innerHTML = "<div class=\"slider-date\"><div class=\"lower\"></div><div class=\"upper\"></div></div><span id=\"event-start\" class=\"temporal-val\">Thursday, 30th December 2010</span><span id=\"event-end\" class=\"temporal-val date-right\">Thursday, 1st January 2015</span>";
+
+
+
+                    $('.slider-date').noUiSlider({
+                        animate: true,
+                        connect: true,
+                        start: [ timestamp(response["projects"][0]["project"]["created"]), timestamp(response["projects"][response["projects"].length-1]["project"]["created"]) ],
+                        step: 1 * 24 * 60 * 60 * 1000,
+                        format: wNumb({
+                            decimals: 0
+                            }),
+                        range: {
+                            min: timestamp(response["projects"][0]["project"]["created"]),
+                            max: timestamp(response["projects"][response["projects"].length-1]["project"]["created"])
+                        }
+                    });
+
+                    $(".slider-date").Link('lower').to($("#event-start"), setDate);
+                    $(".slider-date").Link('upper').to($("#event-end"), setDate);
                 }
-
-                document.getElementById("temporal-slider").innerHTML = "<div class=\"slider-date\"><div class=\"lower\"></div><div class=\"upper\"></div></div><span id=\"event-start\" class=\"temporal-val\">Thursday, 30th December 2010</span><span id=\"event-end\" class=\"temporal-val date-right\">Thursday, 1st January 2015</span>";
-
-
-
-                $('.slider-date').noUiSlider({
-                    animate: true,
-                    connect: true,
-                    start: [ timestamp(response["projects"][0]["project"]["created"]), timestamp(response["projects"][response["projects"].length-1]["project"]["created"]) ],
-                    step: 1 * 24 * 60 * 60 * 1000,
-                    format: wNumb({
-                        decimals: 0
-                        }),
-                    range: {
-                        min: timestamp(response["projects"][0]["project"]["created"]),
-                        max: timestamp(response["projects"][response["projects"].length-1]["project"]["created"])
-                    }
-                });
-
-                $(".slider-date").Link('lower').to($("#event-start"), setDate);
-                $(".slider-date").Link('upper').to($("#event-end"), setDate);
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
+                document.getElementById("temporal-slider").innerHTML = "";
+                document.getElementById("projects-list").innerHTML = "";
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -300,68 +333,71 @@ var Space = function (session){
         xmlhttp.onreadystatechange=function()
         {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                var response = JSON.parse(xmlhttp.responseText);
-                // console.log(xmlhttp.responseText);
+                if(xmlhttp.responseText != ""){
+                    var response = JSON.parse(xmlhttp.responseText);
+                    console.log(xmlhttp.responseText);
 
-                // {
-                //     "created": "2015-06-18 17:05:03.477000",
-                //     "dependencies": 3,
-                //     "id": "55833be59f9d516e1a800779",
-                //     "inputs": 2,
-                //     "label": "Record Label - Procede_04152015",
-                //     "outputs": 2,
-                //     "project": "repro_lab",
-                //     "status": "terminated",
-                //     "updated": "2015-06-18 17:50:34.341000"
-                // } <span class=\"new badge\">4</span></a>
+                    // {
+                    //     "created": "2015-06-18 17:05:03.477000",
+                    //     "dependencies": 3,
+                    //     "id": "55833be59f9d516e1a800779",
+                    //     "inputs": 2,
+                    //     "label": "Record Label - Procede_04152015",
+                    //     "outputs": 2,
+                    //     "project": "repro_lab",
+                    //     "status": "terminated",
+                    //     "updated": "2015-06-18 17:50:34.341000"
+                    // } <span class=\"new badge\">4</span></a>
 
-                document.getElementById("projects-list").innerHTML = "";
+                    document.getElementById("projects-list").innerHTML = "";
+                    console.log((response["records"]);
 
-                for(var i = 0; i < response["records"].length; i++){
-                    record = response["records"][i];
-                    // console.log(record);
-                    var content = "<div class=\"col s12 m6 l4\" id=\"record-"+record["id"]+"\"> ";
-                    content += "<div id=\"profile-card\" class=\"card\">";
-                    content += "<div class=\"card-image waves-effect waves-block waves-light\"><img class=\"activator\" src=\"../images/user-bg.jpg\" alt=\"user background\"></div>";
-                    content += "<div class=\"card-content\">";
-                    // console.log(record);
-                    var disable_download = "";
-                    if(record["container"] == false){
-                        disable_download = "disabled";
+                    for(var i = 0; i < response["records"].length; i++){
+                        record = response["records"][i];
+                        // console.log(record);
+                        var content = "<div class=\"col s12 m6 l4\" id=\"record-"+record["id"]+"\"> ";
+                        content += "<div id=\"profile-card\" class=\"card\">";
+                        content += "<div class=\"card-image waves-effect waves-block waves-light\"><img class=\"activator\" src=\"../images/user-bg.jpg\" alt=\"user background\"></div>";
+                        content += "<div class=\"card-content\">";
+                        // console.log(record);
+                        var disable_download = "";
+                        if(record["container"] == false){
+                            disable_download = "disabled";
+                        }
+                        // console.log(record);
+                        content += "<img src=\"../images/record.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image\"><a onclick=\"space.pull('"+record["project"]+"','"+record["id"]+"')\" class=\"btn-floating activator btn-move-up waves-effect waves-light darken-2 right "+disable_download+"\"><i class=\"mdi-file-cloud-download\"></i></a><span class=\"card-title activator grey-text text-darken-4\"> "+record["label"]+"</span>";
+                        content += "<p class=\"grey-text ultra-small\"><i class=\"mdi-device-access-time cyan-text text-darken-2\"></i> "+record["created"]+"</p>";
+                        content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+record["updated"]+"</p>";
+                        content += "<p><i class=\"mdi-notification-event-note cyan-text text-darken-2\"></i> "+record["id"]+"</p>";
+                        content += "<p><i class=\"mdi-notification-sync cyan-text text-darken-2\"></i> "+record["status"]+"</p>";
+                        content += "<p><i class=\"mdi-action-input cyan-text text-darken-2\"></i> <span class=\"inputs badge\">"+record["inputs"]+"</span></p>";
+                        content += "<p><i class=\"mdi-action-launch cyan-text text-darken-2\"></i> <span class=\"outputs badge\">"+record["outputs"]+"</span></p>";
+                        content += "<p><i class=\"mdi-editor-insert-link cyan-text text-darken-2\"></i> <span class=\"dependencies badge\">"+record["dependencies"]+"</span></p>";
+                        content += "</div>";
+                        content += "</div>";
+                        content += "</div>";
+                        document.getElementById("projects-list").innerHTML += content;
                     }
-                    // console.log(record);
-                    content += "<img src=\"../images/record.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image\"><a onclick=\"space.pull('"+record["project"]+"','"+record["id"]+"')\" class=\"btn-floating activator btn-move-up waves-effect waves-light darken-2 right "+disable_download+"\"><i class=\"mdi-file-cloud-download\"></i></a><span class=\"card-title activator grey-text text-darken-4\"> "+record["label"]+"</span>";
-                    content += "<p class=\"grey-text ultra-small\"><i class=\"mdi-device-access-time cyan-text text-darken-2\"></i> "+record["created"]+"</p>";
-                    content += "<p><i class=\"mdi-device-access-alarm cyan-text text-darken-2\"></i> "+record["updated"]+"</p>";
-                    content += "<p><i class=\"mdi-notification-event-note cyan-text text-darken-2\"></i> "+record["id"]+"</p>";
-                    content += "<p><i class=\"mdi-notification-sync cyan-text text-darken-2\"></i> "+record["status"]+"</p>";
-                    content += "<p><i class=\"mdi-action-input cyan-text text-darken-2\"></i> <span class=\"inputs badge\">"+record["inputs"]+"</span></p>";
-                    content += "<p><i class=\"mdi-action-launch cyan-text text-darken-2\"></i> <span class=\"outputs badge\">"+record["outputs"]+"</span></p>";
-                    content += "<p><i class=\"mdi-editor-insert-link cyan-text text-darken-2\"></i> <span class=\"dependencies badge\">"+record["dependencies"]+"</span></p>";
-                    content += "</div>";
-                    content += "</div>";
-                    content += "</div>";
-                    document.getElementById("projects-list").innerHTML += content;
+
+                    document.getElementById("temporal-slider").innerHTML = "<div class=\"slider-date\"><div class=\"lower\"></div><div class=\"upper\"></div></div><span id=\"event-start\" class=\"temporal-val\">Thursday, 30th December 2010</span><span id=\"event-end\" class=\"temporal-val date-right\">Thursday, 1st January 2015</span>";
+
+                    $('.slider-date').noUiSlider({
+                        animate: true,
+                        connect: true,
+                        start: [ timestamp(response["records"][0]["created"]), timestamp(response["records"][response["records"].length-1]["created"]) ],
+                        step: 1 * 24 * 60 * 60 * 1000,
+                        format: wNumb({
+                            decimals: 0
+                            }),
+                        range: {
+                            min: timestamp(response["records"][0]["created"]),
+                            max: timestamp(response["records"][response["records"].length-1]["created"])
+                        }
+                    });
+
+                    $(".slider-date").Link('lower').to($("#event-start"), setDate);
+                    $(".slider-date").Link('upper').to($("#event-end"), setDate);
                 }
-
-                document.getElementById("temporal-slider").innerHTML = "<div class=\"slider-date\"><div class=\"lower\"></div><div class=\"upper\"></div></div><span id=\"event-start\" class=\"temporal-val\">Thursday, 30th December 2010</span><span id=\"event-end\" class=\"temporal-val date-right\">Thursday, 1st January 2015</span>";
-
-                $('.slider-date').noUiSlider({
-                    animate: true,
-                    connect: true,
-                    start: [ timestamp(response["records"][0]["created"]), timestamp(response["records"][response["records"].length-1]["created"]) ],
-                    step: 1 * 24 * 60 * 60 * 1000,
-                    format: wNumb({
-                        decimals: 0
-                        }),
-                    range: {
-                        min: timestamp(response["records"][0]["created"]),
-                        max: timestamp(response["records"][response["records"].length-1]["created"])
-                    }
-                });
-
-                $(".slider-date").Link('lower').to($("#event-start"), setDate);
-                $(".slider-date").Link('upper').to($("#event-end"), setDate);
             } else {
                 Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
