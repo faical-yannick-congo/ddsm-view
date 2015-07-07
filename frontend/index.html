@@ -560,7 +560,8 @@
                 console.log("++Total Records:"+document.getElementById("total-records").value);
                 console.log("++Total Containers:"+document.getElementById("total-containers").value);
             } else {
-                Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);
+                console.log("Cannot reach the cloud!");
+                // Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);
             }
         }
         var param = window.location.search.substring(1);
