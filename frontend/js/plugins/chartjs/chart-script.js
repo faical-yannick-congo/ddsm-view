@@ -372,7 +372,8 @@ if(parts[0] == "session"){
             console.log(data);
 
         } else {
-            Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);
+            // Materialize.toast('<span>Cannot reach the cloud!</span>', 3000);
+            console.log("Cannot reach the cloud!");
         }
     }
 }else{
