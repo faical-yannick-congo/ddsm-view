@@ -22,7 +22,8 @@ var user = {
                 
                 window.location.replace("http://52.26.127.180:5000/?session="+this.session);
             } else {
-                Materialize.toast('<span>Login failed</span>', 3000);
+                // Materialize.toast('<span>Login failed</span>', 3000);
+                console.log("Login failed");
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -49,7 +50,8 @@ var user = {
                     console.log(this.session)
                     window.location.replace("http://52.26.127.180:5000/?session="+this.session);
                 } else {
-                    Materialize.toast('<span>Register failed</span>', 3000);
+                    console.log("Registration failed failed");
+                    // Materialize.toast('<span>Register failed</span>', 3000);
                     // window.location.replace("http://52.26.127.180:5000/error-500/");
                 }
             }
@@ -70,7 +72,8 @@ var user = {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 window.location.replace("http://52.26.127.180:5000/");
             } else {
-                Materialize.toast('<span>Logout failed</span>', 3000);
+                console.log("Logout failed");
+                // Materialize.toast('<span>Logout failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -95,7 +98,8 @@ var user = {
                 
                 window.location.replace("http://52.26.127.180:5000/?session="+this.session);
             } else {
-                Materialize.toast('<span>Update failed</span>', 3000);
+                console.log("Update failed");
+                // Materialize.toast('<span>Update failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
         }
@@ -118,7 +122,8 @@ var user = {
                 // Materialize.toast('<span>Your message has been sent!</span>', 3000);
                 window.location.replace("http://52.26.127.180:5000/?action=message_sent");
             } else {
-                Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
+                console.log("Contactus failed");
+                // Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
         }
@@ -289,7 +294,8 @@ var Space = function (session){
                 $(".slider-date").Link('lower').to($("#event-start"), setDate);
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
             } else {
-                Materialize.toast('<span>Dashboard failed</span>', 3000);
+                console.log("Dashboard failed");
+                // Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -373,7 +379,8 @@ var Space = function (session){
                 $(".slider-date").Link('lower').to($("#event-start"), setDate);
                 $(".slider-date").Link('upper').to($("#event-end"), setDate);
             } else {
-                Materialize.toast('<span>Dashboard failed</span>', 3000);
+                console.log("Dashboard failed");
+                // Materialize.toast('<span>Dashboard failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -408,7 +415,8 @@ var Space = function (session){
                     // window.open(URL.createObjectURL(oMyBlob));
                 }
             } else {
-                Materialize.toast('<span>Dashboard download failed</span>', 3000);
+                console.log("Dashboard download failed");
+                // Materialize.toast('<span>Dashboard download failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
