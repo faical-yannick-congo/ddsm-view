@@ -22,7 +22,7 @@ var user = {
                 
                 window.location.replace("http://52.26.127.180:5000/?session="+this.session);
             } else {
-                // Materialize.toast('<span>Login failed</span>', 3000);
+                Materialize.toast('<span>Login failed</span>', 3000);
                 console.log("Login failed");
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
@@ -51,7 +51,7 @@ var user = {
                     window.location.replace("http://52.26.127.180:5000/?session="+this.session);
                 } else {
                     console.log("Registration failed failed");
-                    // Materialize.toast('<span>Register failed</span>', 3000);
+                    Materialize.toast('<span>Register failed</span>', 3000);
                     // window.location.replace("http://52.26.127.180:5000/error-500/");
                 }
             }
@@ -73,7 +73,7 @@ var user = {
                 window.location.replace("http://52.26.127.180:5000/");
             } else {
                 console.log("Logout failed");
-                // Materialize.toast('<span>Logout failed</span>', 3000);
+                Materialize.toast('<span>Logout failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/error-500/");
             }
         }
@@ -99,7 +99,7 @@ var user = {
                 window.location.replace("http://52.26.127.180:5000/?session="+this.session);
             } else {
                 console.log("Update failed");
-                // Materialize.toast('<span>Update failed</span>', 3000);
+                Materialize.toast('<span>Update failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
         }
@@ -123,7 +123,7 @@ var user = {
                 window.location.replace("http://52.26.127.180:5000/?action=message_sent");
             } else {
                 console.log("Contactus failed");
-                // Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
+                Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
                 // window.location.replace("http://52.26.127.180:5000/page-500.html");
             }
         }
