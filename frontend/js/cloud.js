@@ -399,7 +399,7 @@ var Space = function (session){
                 // window.open('data:text/json;charset=utf-8,' + escape(this.dash_content));
                 if(xmlhttp.responseText != ""){
                     var pom = document.createElement('a');
-                    pom.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(xmlhttp.responseText));
+                    pom.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(JSON.parse(xmlhttp.responseText), null, 2)));
                     pom.setAttribute('download', 'dashboard.json');
 
                     if (document.createEvent) {
