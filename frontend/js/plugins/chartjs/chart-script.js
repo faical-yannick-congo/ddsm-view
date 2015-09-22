@@ -172,7 +172,7 @@ if(parts[0] == "session"){
     var session = parts[1];
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     console.log(session);
-    xmlhttp.open("GET", "http://52.26.122.110:5200/cloud/v1/user/dashboard/"+session);
+    xmlhttp.open("GET", "http://52.27.131.163:5200/cloud/v1/user/dashboard/"+session);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {

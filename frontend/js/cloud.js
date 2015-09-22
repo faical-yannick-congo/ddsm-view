@@ -1,5 +1,5 @@
 var user = {
-    url: "http://52.26.122.110:5200/cloud/v1/user",
+    url: "http://52.27.131.163:5200/cloud/v1/user",
     username:"",
     email: "",
     api: "",
@@ -230,7 +230,7 @@ var user = {
 }
 
 var Space = function (session){
-    var url = "http://52.26.122.110:5200/cloud/v1";
+    var url = "http://52.27.131.163:5200/cloud/v1";
     this.session = session;
     this.dash_content = "";
 
