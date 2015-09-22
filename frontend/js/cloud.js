@@ -20,11 +20,11 @@ var user = {
                 this.session = response['session']
                 console.log(this.session);
                 
-                window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                window.location.replace("http://52.11.63.124:5000/?session="+this.session);
             } else {
                 Materialize.toast('<span>Login failed</span>', 3000);
                 console.log("Login failed");
-                // window.location.replace("http://52.26.127.180:5000/error-500/");
+                // window.location.replace("http://52.11.63.124:5000/error-500/");
             }
         }
         
@@ -48,11 +48,11 @@ var user = {
                     var response = JSON.parse(xmlhttp.responseText);
                     this.session = response['session']
                     console.log(this.session)
-                    window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                    window.location.replace("http://52.11.63.124:5000/?session="+this.session);
                 } else {
                     console.log("Registration failed failed");
                     Materialize.toast('<span>Register failed</span>', 3000);
-                    // window.location.replace("http://52.26.127.180:5000/error-500/");
+                    // window.location.replace("http://52.11.63.124:5000/error-500/");
                 }
             }
         }else{
@@ -70,11 +70,11 @@ var user = {
         {
             console.log(xmlhttp.responseText);
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
-                window.location.replace("http://52.26.127.180:5000/");
+                window.location.replace("http://52.11.63.124:5000/");
             } else {
                 console.log("Logout failed");
                 Materialize.toast('<span>Logout failed</span>', 3000);
-                // window.location.replace("http://52.26.127.180:5000/error-500/");
+                // window.location.replace("http://52.11.63.124:5000/error-500/");
             }
         }
         
@@ -96,11 +96,11 @@ var user = {
                 console.log(this.session)
                 // document.getElementById("nav-login").innerHTML = "<li><a href=\"index.html\" class=\"waves-effect waves-block waves-light\"><i class=\"nav-action mdi-action-exit-to-app\"></i></a></li>";
                 
-                window.location.replace("http://52.26.127.180:5000/?session="+this.session);
+                window.location.replace("http://52.11.63.124:5000/?session="+this.session);
             } else {
                 console.log("Update failed");
                 Materialize.toast('<span>Update failed</span>', 3000);
-                // window.location.replace("http://52.26.127.180:5000/page-500.html");
+                // window.location.replace("http://52.11.63.124:5000/page-500.html");
             }
         }
         
@@ -120,11 +120,11 @@ var user = {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 console.log(xmlhttp.responseText)                
                 // Materialize.toast('<span>Your message has been sent!</span>', 3000);
-                window.location.replace("http://52.26.127.180:5000/?action=message_sent");
+                window.location.replace("http://52.11.63.124:5000/?action=message_sent");
             } else {
                 console.log("Contactus failed");
                 Materialize.toast('<span class="yellow-text">Contact us failed</span>', 3000);
-                // window.location.replace("http://52.26.127.180:5000/page-500.html");
+                // window.location.replace("http://52.11.63.124:5000/page-500.html");
             }
         }
         
@@ -141,7 +141,7 @@ var user = {
             if ((xmlhttp.status >= 200 && xmlhttp.status <= 300) || xmlhttp.status == 304) {
                 Materialize.toast('<span>Access trusted!</span>', 3000);
             } else {
-                window.location.replace("http://52.26.127.180:5000/error-404/");
+                window.location.replace("http://52.11.63.124:5000/error-404/");
             }
         }
         
@@ -188,7 +188,7 @@ var user = {
 
                 console.log("Account Api: "+this.api);
             } else {
-                window.location.replace("http://52.26.127.180:5000/error-404/");
+                window.location.replace("http://52.11.63.124:5000/error-404/");
             }
         }
         
@@ -212,7 +212,7 @@ var user = {
                 }
                 Materialize.toast('<span>API Token renewed!</span>', 3000);
             } else {
-                window.location.replace("http://52.26.127.180:5000/error-404/");
+                window.location.replace("http://52.11.63.124:5000/error-404/");
             }
         }
         
@@ -296,7 +296,7 @@ var Space = function (session){
             } else {
                 console.log("Dashboard failed");
                 // Materialize.toast('<span>Dashboard failed</span>', 3000);
-                // window.location.replace("http://52.26.127.180:5000/error-500/");
+                // window.location.replace("http://52.11.63.124:5000/error-500/");
             }
         }
         
@@ -381,7 +381,7 @@ var Space = function (session){
             } else {
                 console.log("Dashboard failed");
                 // Materialize.toast('<span>Dashboard failed</span>', 3000);
-                // window.location.replace("http://52.26.127.180:5000/error-500/");
+                // window.location.replace("http://52.11.63.124:5000/error-500/");
             }
         }
         
@@ -417,7 +417,7 @@ var Space = function (session){
             } else {
                 console.log("Dashboard download failed");
                 // Materialize.toast('<span>Dashboard download failed</span>', 3000);
-                // window.location.replace("http://52.26.127.180:5000/error-500/");
+                // window.location.replace("http://52.11.63.124:5000/error-500/");
             }
         }
     }
